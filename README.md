@@ -1,5 +1,5 @@
 # ImdB-Website-react-fastapi
-A ImdB website written in frontend using React Js, backend using FastAPI and database using MongoDB
+A ImdB website written in frontend using React Js, backend using Python FastAPI and database using MongoDB
 
 Preview available at prototype guideline pdf file
 
