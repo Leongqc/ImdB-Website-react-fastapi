@@ -1,0 +1,170 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* src/App.css */
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Initial state - Fade in */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+.fade-out {
+  opacity: 1;
+  animation: fadeOut 0.3s forwards;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Optional for slide-in effect */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for fade-out effect */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px); /* Optional for slide-out effect */
+  }
+}
+
+.success-box {
+  position: absolute; /* Position it absolutely */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  background-color: #4caf50; /* Green background */
+  color: white;
+  padding: 10px 20px; /* Padding for aesthetics */
+  border-radius: 5px; /* Rounded corners */
+  z-index: 1000; /* Ensure it appears above other content */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transition */
+  transform: translateY(-10px); /* Slight upward shift */
+  opacity: 0; /* Start invisible */
+}
+
+/* Show the success box when it is visible */
+.success-box.show {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to original position */
+}
+
+.filter-box {
+  position: absolute; /* Position it absolutely */
+  right: 100px; /* Distance from the right */
+  background-color: #4caf50; /* Green background */
+  color: white;
+  padding: 10px 20px; /* Padding for aesthetics */
+  border-radius: 5px; /* Rounded corners */
+  z-index: 1000; /* Ensure it appears above other content */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transition */
+  transform: translateY(-10px); /* Slight upward shift */
+  opacity: 0; /* Start invisible */
+}
+
+/* Show the success box when it is visible */
+.filter-box.show {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to original position */
+}
+
+.list-container {
+  min-height: 400px; /* or height: auto if you want it dynamic */
+  overflow-y: auto; /* Ensure it can scroll */
+}
+
+/* animations for suggestionMovie */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOutRight {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-100%); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOutLeft {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(100%); }
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.5s forwards;
+}
+
+.fade-out-right {
+  animation: fadeOutRight 0.5s forwards;
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.5s forwards;
+}
+
+.fade-out-left {
+  animation: fadeOutLeft 0.5s forwards;
+}
+
+
+
+
