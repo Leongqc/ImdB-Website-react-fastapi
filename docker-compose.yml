@@ -2,28 +2,24 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend  # Path to backend Dockerfile
-    ports:
-      - "8000:8000"
-    environment:
-      - MONGO_URI=${MONGO_URI}  # Use environment variables from .env file
-      - APP_ENV=production
+    build: ./backend  # Path to your backend Dockerfile
     networks:
       - app-network
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - APP_ENV=production
+    # DO NOT expose port 8000 to the host (remove "ports" section)
+    # Backend is only accessible within the Docker network
 
   frontend:
-    build: ./frontend  # Path to frontend Dockerfile
+    build: ./frontend  # Path to your frontend Dockerfile
     ports:
-      - "80:80"
+      - "80:80"        # Expose port 80 to the host
     depends_on:
       - backend
     networks:
       - app-network
 
-# Define a network for the services to communicate
 networks:
   app-network:
     driver: bridge
-
-# Optional: Use an external .env file for secrets
-# (Create a `.env` file in the same folder as docker-compose.yml)
