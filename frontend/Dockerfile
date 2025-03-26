@@ -1,27 +1,27 @@
-# Stage 1: Build the React app
+# Stage 1: Build React app
 FROM node:18 AS build
-
 WORKDIR /app
 
-# Copy package files and install dependencies
-COPY package*.json ./
+# Copy package files
+COPY CSS_Assg/frontend/package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy the rest of the app and build
-COPY . .
+# Copy all frontend files
+COPY CSS_Assg/frontend/ .
+
+# Build React app
 RUN npm run build
 
-# Stage 2: Serve the app with Nginx
+# Stage 2: Serve with Nginx
 FROM nginx:alpine
 
 # Copy Nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY CSS_Assg/frontend/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy the built React app from the previous stage
+# Copy React build files
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose port 80 for HTTP
 EXPOSE 80
-
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
