@@ -13,4 +13,3 @@ Some info:
 7. run pip3 install fastapi uvicorn motor to install the backend, fastapi framework and the connector to database
 8. To start backend, python -m uvicorn main:app --reload --port 8000
 
-mongodb+srv://<db_username>:<db_password>@cluster0.aa7sj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
