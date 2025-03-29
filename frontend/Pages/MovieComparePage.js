@@ -22,8 +22,14 @@ const ComparisonPage = () => {
     const location = useLocation();
     const { selectedMovies } = location.state || { selectedMovies: [] };
 
-    const { data: movie1, isLoading: loadingMovie1 } = useQuery(['movie', selectedMovies[0]], () => fetchMovieDetails(selectedMovies[0]));
-    const { data: movie2, isLoading: loadingMovie2 } = useQuery(['movie', selectedMovies[1]], () => fetchMovieDetails(selectedMovies[1]));
+    const { data: movie1, isLoading: loadingMovie1 } = useQuery({
+        queryKey: ['movie', selectedMovies[0]],
+        queryFn: () => fetchMovieDetails(selectedMovies[0])
+    });
+    const { data: movie2, isLoading: loadingMovie2 } = useQuery({
+        queryKey: ['movie', selectedMovies[1]],
+        queryFn: () => fetchMovieDetails(selectedMovies[1])
+    });
 
     if (loadingMovie1 || loadingMovie2) {
         return <CircularProgress />;
