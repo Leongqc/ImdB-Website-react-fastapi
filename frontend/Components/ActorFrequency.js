@@ -10,7 +10,7 @@ Chart.register(...registerables);
 
 // Function to fetch actor frequency data
 const fetchActorFrequency = async () => {
-    const { data } = await axios.get('http://127.0.0.1:8000/movies/actors/frequency');
+    const { data } = await axios.get('/api/movies/actors/frequency');
 
     // Transform the data for the chart
     if (data && Array.isArray(data)) {

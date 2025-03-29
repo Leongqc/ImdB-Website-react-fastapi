@@ -87,7 +87,7 @@ const Navbar = () => {
         }
 
         // Send login request to FastAPI backend
-        axios.post('http://127.0.0.1:8000/movie/login', { email, password })
+        axios.post('/api/movie/login', { email, password })
             .then(response => {
                 // Check if the login was successful
                 if (response.data.access_token) {
@@ -140,7 +140,7 @@ const Navbar = () => {
             return;
         }
 
-        axios.post('http://127.0.0.1:8000/movie/register', { email, password})
+        axios.post('/api/movie/register', { email, password})
             .then(response => {
                 setRegisterMessage('Registration successful. You can now log in.');
                 setEmail(''); // Clear the email field

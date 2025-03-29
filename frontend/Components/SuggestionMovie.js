@@ -24,7 +24,7 @@ const MovieRecommendations = () => {
     useEffect(() => {
         const fetchSearchedMovies = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/movie/searched', {
+                const response = await axios.get('/api/movie/searched', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -32,7 +32,7 @@ const MovieRecommendations = () => {
                 if (movieIds.length > 0) {
                     const movieDetails = await Promise.all(
                         movieIds.slice(0, MAX_RECOMMENDATIONS).map(async (id) => {
-                            const movieResponse = await axios.get(`http://127.0.0.1:8000/movies/${id}`, {
+                            const movieResponse = await axios.get(`/api/movies/${id}`, {
                                 headers: { Authorization: `Bearer ${token}` },
                             });
                             return movieResponse.data;

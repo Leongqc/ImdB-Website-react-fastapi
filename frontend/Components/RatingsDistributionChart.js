@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'; // Import useQuery from react-
 import { Card, CardContent, Typography, CircularProgress } from '@mui/material';
 
 const fetchRatingsDistribution = async () => {
-    const response = await fetch('http://localhost:8000/movies/ratings/distribution');
+    const response = await fetch('/api/movies/ratings/distribution');
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }

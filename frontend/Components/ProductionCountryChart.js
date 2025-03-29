@@ -10,7 +10,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const fetchProductionCountry = async () => {
-    const response = await fetch('http://127.0.0.1:8000/movies/production-country');
+    const response = await fetch('/api/movies/production-country');
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }

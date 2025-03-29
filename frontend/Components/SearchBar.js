@@ -61,7 +61,7 @@ const SearchBar = () => {
     }, [token]);
 
     const fetchSearchHistory = () => {
-        axios.get('http://127.0.0.1:8000/movie/history-data', {
+        axios.get('/api/movie/history-data', {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(response => {
@@ -103,7 +103,7 @@ const SearchBar = () => {
         };
 
         // Send the formatted data to the backend
-        axios.post('http://127.0.0.1:8000/movie/historyupdate', historyData, {
+        axios.post('/api/movie/historyupdate', historyData, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(() => {

@@ -137,7 +137,7 @@ const UserNavbar = ({ onUpdatePreferences }) => {
     const handleSavePreferences = () => {
         const token = localStorage.getItem('token');
         // Save the preferences via API call
-        axios.post('http://127.0.0.1:8000/movie/update-user-preference', {components: components}, {
+        axios.post('/api/movie/update-user-preference', {components: components}, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -175,7 +175,7 @@ const UserNavbar = ({ onUpdatePreferences }) => {
 
         // Make API request to fetch preferences
         const token = localStorage.getItem('token');
-        axios.get('http://127.0.0.1:8000/movie/user-preferences', {
+        axios.get('/api/movie/user-preferences', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -264,7 +264,7 @@ const UserNavbar = ({ onUpdatePreferences }) => {
         // Get the JWT token from localStorage (or wherever you are storing it)
         const token = localStorage.getItem('token');  // Example, change as per your storage logic
 
-        axios.post('http://127.0.0.1:8000/movie/change-password', {
+        axios.post('/api/movie/change-password', {
             oldPassword,
             newPassword,
         }, {

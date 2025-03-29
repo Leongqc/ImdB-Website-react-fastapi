@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, Typography, CircularProgress } from '@mui/material';
 
 const fetchRevenueAndCountOverTime = async () => {
-    const response = await fetch('http://127.0.0.1:8000/movies/releases-over-time'); // Use the combined endpoint
+    const response = await fetch('/api/movies/releases-over-time'); // Use the combined endpoint
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }

@@ -15,7 +15,7 @@ const MovieDetails = () => {
     const [successMessageClass, setSuccessMessageClass] = useState('');
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/movies/${id}`)
+        axios.get(`/api/movies/${id}`)
             .then(response => {
                 setMovie(response.data);
             })
@@ -28,7 +28,7 @@ const MovieDetails = () => {
         // If the token exists, record the searched movie
         if (storedToken) {
             axios.post(
-                `http://127.0.0.1:8000/movie/save-searched-movie`,
+                `/api/movie/save-searched-movie`,
                 { movie_id: id },
                 {
                     headers: { Authorization: `Bearer ${storedToken}` },
@@ -46,7 +46,7 @@ const MovieDetails = () => {
     const handleSaveAsFavorite = () => {
         if (!token) return;
 
-        axios.post(`http://127.0.0.1:8000/movie/save-fav-movie`, { movie_id: id }, {
+        axios.post(`/api/movie/save-fav-movie`, { movie_id: id }, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(response => {

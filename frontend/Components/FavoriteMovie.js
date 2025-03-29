@@ -11,7 +11,7 @@ const FavoriteMovie = () => {
     useEffect(() => {
         const fetchFavoriteMovieId = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/movie/favmovie`, {
+                const response = await axios.get(`/api/movie/favmovie`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 const favoriteMovieId = parseInt(response.data.movie_id, 10);
@@ -25,7 +25,7 @@ const FavoriteMovie = () => {
 
         const fetchMovieDetail = async (id) => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/movies/${id}`, {
+                const response = await axios.get(`/api/movies/${id}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setMovie(response.data);

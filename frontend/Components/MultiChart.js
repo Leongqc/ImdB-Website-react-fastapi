@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Grid, Card, CardContent, Typography, CircularProgress, Select, MenuItem } from '@mui/material';
 
 const fetchTopMovies = async (filter) => {
-    const response = await fetch(`http://127.0.0.1:8000/movies/top-rated?filter=${filter}`);
+    const response = await fetch(`/api/movies/top-rated?filter=${filter}`);
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
@@ -12,7 +12,7 @@ const fetchTopMovies = async (filter) => {
 };
 
 const fetchPopRating = async (filter) => {
-    const response = await fetch(`http://127.0.0.1:8000/movies/pop-vs-rating?filter=${filter}`);
+    const response = await fetch(`/api/movies/pop-vs-rating?filter=${filter}`);
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
@@ -20,7 +20,7 @@ const fetchPopRating = async (filter) => {
 };
 
 const fetchProduction = async (filter) => {
-    const response = await fetch(`http://127.0.0.1:8000/movies/production?filter=${filter}`);
+    const response = await fetch(`/api/movies/production?filter=${filter}`);
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
@@ -28,7 +28,7 @@ const fetchProduction = async (filter) => {
 };
 
 const fetchActor = async (filter) => {
-    const response = await fetch(`http://127.0.0.1:8000/movies/top-actors?filter=${filter}`);
+    const response = await fetch(`/api/movies/top-actors?filter=${filter}`);
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }

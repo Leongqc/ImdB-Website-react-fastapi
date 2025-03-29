@@ -13,7 +13,7 @@ const COLORS = [
 
 // Fetch genre data from the API
 const fetchGenreData = async () => {
-    const response = await fetch('http://127.0.0.1:8000/movies/genre-breakdown');
+    const response = await fetch('/api/movies/genre-breakdown');
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }

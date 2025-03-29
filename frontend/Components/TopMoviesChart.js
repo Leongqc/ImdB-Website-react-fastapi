@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, Typography, CircularProgress, Select, MenuItem } from '@mui/material';
 
 const fetchTopMovies = async (filter) => {
-    const response = await fetch(`http://127.0.0.1:8000/movies/top-rated?filter=${filter}`);
+    const response = await fetch(`/api/movies/top-rated?filter=${filter}`);
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }

@@ -5,34 +5,34 @@ import axios from 'axios';
 
 // Fetch functions
 const fetchTotalMovies = async () => {
-    const { data } = await axios.get('http://127.0.0.1:8000/movies?limit=0');
+    const { data } = await axios.get('/api/movies?limit=0');
     return data.length;
 };
 
 const fetchTopRatedMovie = async () => {
-    const { data } = await axios.get('http://127.0.0.1:8000/movies/top-rated');
+    const { data } = await axios.get('/api/movies/top-rated');
     return data[0] || {};
 };
 
 const fetchMostFrequentGenre = async () => {
-    const { data } = await axios.get('http://127.0.0.1:8000/movies/genre-breakdown');
+    const { data } = await axios.get('/api/movies/genre-breakdown');
     return data[0]?._id || 'N/A';
 };
 
 const fetchMostPopularMovie = async () => {
-    const { data } = await axios.get('http://127.0.0.1:8000/movies/most-popular');
+    const { data } = await axios.get('/api/movies/most-popular');
     return data[0] || {};
 };
 
 const fetchAverageRuntime = async () => {
-    const { data } = await axios.get('http://127.0.0.1:8000/movies');
+    const { data } = await axios.get('/api/movies');
     const runtimes = data.map(movie => movie.runtime).filter(rt => rt !== null);
     const avgRuntime = runtimes.reduce((a, b) => a + b, 0) / runtimes.length;
     return avgRuntime.toFixed(2);
 };
 
 const fetchUniqueLanguages = async () => {
-    const { data } = await axios.get('http://127.0.0.1:8000/movies/unique-languages');
+    const { data } = await axios.get('/api/movies/unique-languages');
     return data;
 };
 

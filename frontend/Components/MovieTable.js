@@ -51,7 +51,7 @@ const MovieTable = () => {
     }, [movies, order, orderBy, year]);  // No genre here
 
     const fetchFilter = (token) => {
-        axios.get(`http://127.0.0.1:8000/movie/getfilter`, {
+        axios.get(`/api/movie/getfilter`, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(response => {
@@ -69,7 +69,7 @@ const MovieTable = () => {
     }
 
     const fetchMovies = (selectedGenre = genre, selectedYear = year) => {
-        let apiUrl = `http://127.0.0.1:8000/movies?limit=1000`;
+        let apiUrl = `/api/movies?limit=1000`;
         if (selectedGenre) apiUrl += `&genre=${selectedGenre}`;
         if (selectedYear) apiUrl += `&year=${selectedYear}`;
 
@@ -144,7 +144,7 @@ const MovieTable = () => {
     const handleSaveAsFavorite = () => {
         if (!token) return; // If there's no token, do nothing
 
-        axios.post(`http://127.0.0.1:8000/movie/save-filter`, {genres: genre, year: year}, {
+        axios.post(`/api/movie/save-filter`, {genres: genre, year: year}, {
             headers: { Authorization: `Bearer ${token}` } // Send the token with the request
         })
             .then(response => {
