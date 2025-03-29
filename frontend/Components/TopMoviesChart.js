@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, Typography, CircularProgress, Select, MenuItem } from '@mui/material';
 
 const fetchTopMovies = async (filter) => {
@@ -17,8 +17,12 @@ const TopMoviesChart = () => {
     const [filter, setFilter] = useState('highest-rated'); // Default filter
 
     // Fetch data based on the selected filter
-    const { data: topMovies, isLoading, isError, error } = useQuery(['topMovies', filter], () => fetchTopMovies(filter));
+    const { data: topMovies, isLoading, isError, error } = useQuery({
+      queryKey: ['topMovies', filter],
+      queryFn: () => fetchTopMovies(filter)
+    });
 
+    
     const handleFilterChange = (event) => {
         setFilter(event.target.value); // Update filter and refetch data
     };
