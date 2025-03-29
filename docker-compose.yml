@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   backend:
@@ -6,15 +6,16 @@ services:
     networks:
       - app-network
     environment:
-      - MONGO_URI=${MONGO_URI}
       - APP_ENV=production
+    expose:
+      - "8000"
     # DO NOT expose port 8000 to the host (remove "ports" section)
     # Backend is only accessible within the Docker network
 
   frontend:
     build: ./frontend  # Path to your frontend Dockerfile
     ports:
-      - "80:80"        # Expose port 80 to the host
+      - "8080:80"        # Expose port 80 to the host
     depends_on:
       - backend
     networks:
