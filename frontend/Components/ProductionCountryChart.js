@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { useQuery } from 'react-query'; // Import useQuery from react-query
+import { useQuery } from '@tanstack/react-query'; // Import useQuery from react-query
 import { Card, CardContent, Typography, CircularProgress } from '@mui/material';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
@@ -19,8 +19,13 @@ const fetchProductionCountry = async () => {
 
 const ProductionCountryChart = () => {
     // Use useQuery to fetch top movies data
-    const { data: productionCountry, isLoading, isError, error } = useQuery('productionCountry', fetchProductionCountry);
 
+    const { data: productionCountry, isLoading, isError, error } = useQuery({
+      queryKey: ['productionCountry'],
+      queryFn: fetchProductionCountry
+    });
+
+    
     if (isLoading) {
         return (
             <Card sx={{ margin: 2, textAlign: 'center' }}>
