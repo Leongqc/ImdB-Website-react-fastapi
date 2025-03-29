@@ -40,11 +40,15 @@ const fetchActorFrequency = async () => {
 
 const ActorFrequency = () => {
     // Use React Query to fetch data with caching
-    const { data, error, isLoading } = useQuery('actorFrequency', fetchActorFrequency, {
-        staleTime: 1000 * 60 * 5, // 5 minutes
-        cacheTime: 1000 * 60 * 10, // Cache for 10 minutes
-        refetchOnWindowFocus: false // Do not refetch on window focus
-    });
+
+const { data, error, isLoading } = useQuery({
+  queryKey: ['actorFrequency'],
+  queryFn: fetchActorFrequency,
+  staleTime: 1000 * 60 * 5, // 5 minutes
+  cacheTime: 1000 * 60 * 10, // Cache for 10 minutes
+  refetchOnWindowFocus: false // Do not refetch on window focus
+});
+
 
     if (isLoading) {
         return (
