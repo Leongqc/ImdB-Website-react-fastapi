@@ -22,7 +22,7 @@ app.add_middleware(
 )
 
 # MongoDB connection
-client = AsyncIOMotorClient("mongodb+srv://guest1:guest1@cluster0.aa7sj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client = AsyncIOMotorClient("mongodb+srv://<username>:<password>@cluster0.aa7sj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client["IWD"]
 movies_collection = db["IMDb"]
 user = db["user"]
