@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend  # Path to your backend Dockerfile
+    networks:
+      - app-network
+    environment:
+      - APP_ENV=production
+    # DO NOT expose port 8000 to the host (remove "ports" section)
+    # Backend is only accessible within the Docker network
+
+  frontend:
+    build: ./frontend  # Path to your frontend Dockerfile
+    ports:
+      - "80:80"        # Expose port 80 to the host
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
