@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate} from 'react-router-dom';
 import { Card, CardContent, Grid, Typography, Button, Divider, CircularProgress } from '@mui/material';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
