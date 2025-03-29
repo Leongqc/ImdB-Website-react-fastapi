@@ -1,6 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer, Legend } from 'recharts';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, Typography, CircularProgress } from '@mui/material';
 import { useState } from 'react';
 
@@ -21,8 +21,13 @@ const fetchGenreData = async () => {
 };
 
 const GenreBreakdownChart = () => {
-    const { data: genreData = [], isLoading, isError, error } = useQuery('genreData', fetchGenreData);
 
+    const { data: genreData = [], isLoading, isError, error } = useQuery({
+      queryKey: ['genreData'],
+      queryFn: fetchGenreData
+    });
+
+    
     const [activeIndex, setActiveIndex] = useState(-1); // Track which slice is hovered
 
     // Event handler for when a pie slice is hovered
