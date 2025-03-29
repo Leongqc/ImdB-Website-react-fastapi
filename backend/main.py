@@ -15,14 +15,14 @@ app = FastAPI()
 # CORS configuration to allow frontend to access backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React app domain
+    allow_origins=["http://frontend:80"],  # React app domain
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # MongoDB connection
-client = AsyncIOMotorClient("mongodb://localhost:27017")
+client = AsyncIOMotorClient("mongodb+srv://guest1:guest1@cluster0.aa7sj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client["IWD"]
 movies_collection = db["IMDb"]
 user = db["user"]
