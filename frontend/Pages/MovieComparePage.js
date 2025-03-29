@@ -13,7 +13,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const fetchMovieDetails = async (movieId) => {
-    const { data } = await axios.get(`http://127.0.0.1:8000/movies/${movieId}`);
+    const { data } = await axios.get(`/api/movies/${movieId}`);
     return data;
 };
 

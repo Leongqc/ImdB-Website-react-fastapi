@@ -35,7 +35,7 @@ const ResultsPage = () => {
         if (ratingRange.length > 0) queryParams.append('ratingRange', ratingRange.join(','));
         if (yearRange.length > 0) queryParams.append('yearRange', yearRange.join(','));
 
-        const axiosUrl = `http://127.0.0.1:8000/movie/search?${queryParams.toString()}`;
+        const axiosUrl = `/api/movie/search?${queryParams.toString()}`;
 
         // Fetch movies from the backend
         const fetchMovies = async () => {

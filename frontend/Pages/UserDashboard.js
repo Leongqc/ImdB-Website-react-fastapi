@@ -52,7 +52,7 @@ const UserDashboard = () => {
     useEffect(() => {
         const fetchPreferences = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/movie/user-preferences', {
+                const response = await fetch('/api/movie/user-preferences', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
