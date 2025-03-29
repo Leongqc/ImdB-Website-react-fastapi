@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {ZAxis, ScatterChart, Scatter, PieChart, Pie, Cell, LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Grid, Card, CardContent, Typography, CircularProgress, Select, MenuItem } from '@mui/material';
 
 const fetchTopMovies = async (filter) => {
@@ -39,10 +39,28 @@ const MultiChart = () => {
     const [filter, setFilter] = useState('highest-rated');
 
     // Fetch data based on the selected filter
-    const { data: topMovies, isLoading, isError, error } = useQuery(['topMovies', filter], () => fetchTopMovies(filter));
-    const { data: popRate, isLoading: isLoading2, isError: isError2, error: error2 } = useQuery(['popRate', filter], () => fetchPopRating(filter));
-    const { data: production, isLoading: isLoading3, isError: isError3, error: error3 } = useQuery(['production', filter], () => fetchProduction(filter));
-    const { data: actor, isLoading: isLoading4, isError: isError4, error: error4 } = useQuery(['actor', filter], () => fetchActor(filter));
+
+    const { data: topMovies, isLoading, isError, error } = useQuery({
+      queryKey: ['topMovies', filter],
+      queryFn: () => fetchTopMovies(filter)
+    });
+
+    const { data: popRate, isLoading: isLoading2, isError: isError2, error: error2 } = useQuery({
+      queryKey: ['popRate', filter],
+      queryFn: () => fetchPopRating(filter)
+    });
+
+    const { data: production, isLoading: isLoading3, isError: isError3, error: error3 } = useQuery({
+      queryKey: ['production', filter],
+      queryFn: () => fetchProduction(filter)
+    });
+
+    const { data: actor, isLoading: isLoading4, isError: isError4, error: error4 } = useQuery({
+      queryKey: ['actor', filter],
+      queryFn: () => fetchActor(filter)
+    });
+
+    
     const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#a4de6c'];
 
     const handleFilterChange = (event) => {
