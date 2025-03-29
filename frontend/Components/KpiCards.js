@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Grid, Card, CardContent, Typography, CircularProgress, Tooltip } from '@mui/material';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 // Fetch functions
@@ -37,12 +37,37 @@ const fetchUniqueLanguages = async () => {
 };
 
 const KpiCards = () => {
-    const { data: totalMovies, isLoading: loadingTotalMovies } = useQuery('totalMovies', fetchTotalMovies);
-    const { data: topRatedMovie, isLoading: loadingTopRatedMovie } = useQuery('topRatedMovie', fetchTopRatedMovie);
-    const { data: mostFrequentGenre, isLoading: loadingMostFrequentGenre } = useQuery('mostFrequentGenre', fetchMostFrequentGenre);
-    const { data: averageRuntime, isLoading: loadingAverageRuntime } = useQuery('averageRuntime', fetchAverageRuntime);
-    const { data: mostPopularMovie, isLoading: loadingMostPopularMovie } = useQuery('mostPopularMovie', fetchMostPopularMovie);
-    const { data: uniqueLanguages, isLoading: loadingUniqueLanguages } = useQuery('uniqueLanguages', fetchUniqueLanguages);
+
+    const { data: totalMovies, isLoading: loadingTotalMovies } = useQuery({
+      queryKey: ['totalMovies'],
+      queryFn: fetchTotalMovies
+    });
+
+    const { data: topRatedMovie, isLoading: loadingTopRatedMovie } = useQuery({
+      queryKey: ['topRatedMovie'],
+      queryFn: fetchTopRatedMovie
+    });
+
+    const { data: mostFrequentGenre, isLoading: loadingMostFrequentGenre } = useQuery({
+      queryKey: ['mostFrequentGenre'],
+      queryFn: fetchMostFrequentGenre
+    });
+
+    const { data: averageRuntime, isLoading: loadingAverageRuntime } = useQuery({
+      queryKey: ['averageRuntime'],
+      queryFn: fetchAverageRuntime
+    });
+
+    const { data: mostPopularMovie, isLoading: loadingMostPopularMovie } = useQuery({
+      queryKey: ['mostPopularMovie'],
+      queryFn: fetchMostPopularMovie
+    });
+
+    const { data: uniqueLanguages, isLoading: loadingUniqueLanguages } = useQuery({
+      queryKey: ['uniqueLanguages'],
+      queryFn: fetchUniqueLanguages
+    });
+
 
     const [hoveredCard, setHoveredCard] = useState(null); // State to track hovered card
 
