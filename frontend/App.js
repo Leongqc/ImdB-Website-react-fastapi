@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';  // Import React Query Client
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';  // Import React Query Client
 import Dashboard from './Pages/Dashboard';
 import MovieDetailPage from './Pages/MovieDetailPage';
 import SearchResultPage from "./Pages/SearchResultPage";
