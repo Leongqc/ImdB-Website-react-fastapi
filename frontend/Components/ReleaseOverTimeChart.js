@@ -1,6 +1,6 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, Typography, CircularProgress } from '@mui/material';
 
 const fetchRevenueAndCountOverTime = async () => {
@@ -12,7 +12,10 @@ const fetchRevenueAndCountOverTime = async () => {
 };
 
 const RevenueOverTimeChart = () => {
-    const { data, isLoading, isError, error } = useQuery('revenueAndCountOverTime', fetchRevenueAndCountOverTime);
+    const { data, isLoading, isError, error } = useQuery({
+      queryKey: ['revenueAndCountOverTime'],
+      queryFn: fetchRevenueAndCountOverTime
+    });
 
     // Prepare data for the chart
     const revenueData = data ? data.map(item => ({ year: item._id, revenue: item.revenue, releases: item.count })) : [];
