@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Bar } from 'react-chartjs-2'; // Assuming you're using Chart.js
-import { useQuery } from 'react-query'; // Import useQuery from react-query
+import { useQuery } from '@tanstack/react-query'; // Import useQuery from react-query
 import { Card, CardContent, Typography, CircularProgress } from '@mui/material';
 
 const fetchRatingsDistribution = async () => {
@@ -15,8 +15,12 @@ const fetchRatingsDistribution = async () => {
 
 const RatingsDistribution = () => {
     // Use useQuery to fetch ratings distribution data
-    const { data, isLoading, isError, error } = useQuery('ratingsDistribution', fetchRatingsDistribution);
+    const { data, isLoading, isError, error } = useQuery({
+      queryKey: ['ratingsDistribution'],
+      queryFn: fetchRatingsDistribution
+    });
 
+    
     // Prepare data for Chart.js
     const chartData = {
         labels: data ? data.map(item => item._id) : [], // Genres
