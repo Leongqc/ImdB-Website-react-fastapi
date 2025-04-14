@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./css_assg/backend
+    networks:
+      - app-network
+    environment:
+      - APP_ENV=production
+     # - MONGO_URI=${MONGO_URI}
+
+  frontend:
+    build: ./css_assg/frontend
+    networks:
+      - app-network
+    expose:
+      - "80"  # Expose port internally (no host mapping)
+
+  nginx-proxy:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./letsencrypt/live:/etc/letsencrypt/live  # SSL certificates
+      - ./letsencrypt/archive:/etc/letsencrypt/archive
+    networks:
+      - app-network
+    depends_on:
+      - frontend
+      - backend
+
+networks:
+  app-network:
+    driver: bridge
